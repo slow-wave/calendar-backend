@@ -1,7 +1,7 @@
 export const LogQueries = {
   AddLog: `
         INSERT INTO record (user_id, datetime, content_title, content_main, color, content_image) 
-        VALUES (?, now(), ?, ?, UNHEX(?), ?);`,
+        VALUES (?, CONVERT_TZ(now(), '+00:00', '+09:00'), ?, ?, UNHEX(?), ?);`,
   GetLogByDay: `
         SELECT id, user_id, DATE_FORMAT(datetime, "%Y-%m-%d %H:%i:%s") as datetime, content_title, content_main, HEX(color) as color
         FROM record WHERE user_id = ? and DATE(datetime) = ?;`,
