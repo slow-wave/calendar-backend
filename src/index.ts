@@ -11,8 +11,11 @@ MySQLConnector.init();
 
 //Middleware
 app.use(express.json());
+
 app.use(
-  cors({ origin: "https://daily-diary-happy.netlify.app", credentials: true })
+  cors({
+    origin: "*", // 모든 출처 허용 옵션. true 를 써도 된다.
+  })
 );
 
 //Routes
